@@ -1,8 +1,8 @@
 <component name="ArtifactManager">
-  <artifact type="war" name="RobotSafeBox:war">
+  <artifact type="war" name="robotsafebox:war">
     <output-path>$PROJECT_DIR$/target</output-path>
     <root id="archive" name="robotsafebox.war">
-      <element id="artifact" artifact-name="RobotSafeBox:war exploded" />
+      <element id="artifact" artifact-name="robotsafebox:war exploded" />
     </root>
   </artifact>
 </component>

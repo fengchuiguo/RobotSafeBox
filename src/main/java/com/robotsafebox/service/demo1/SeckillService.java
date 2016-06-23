@@ -6,6 +6,7 @@ import com.robotsafebox.entity.demo1.Seckill;
 import com.robotsafebox.exception.demo1.RepeatKillException;
 import com.robotsafebox.exception.demo1.SeckillCloseException;
 import com.robotsafebox.exception.demo1.SeckillException;
+import com.robotsafebox.framework.model.Pager;
 
 import java.util.List;
 
@@ -22,6 +23,12 @@ public interface SeckillService {
      * @return
      */
     List<Seckill> getSeckillList();
+
+    /**
+     * 分页查询
+     * @return
+     */
+    List<Seckill> getSeckillListByPager(Pager pager);
 
     /**
      * 查询单个秒杀记录

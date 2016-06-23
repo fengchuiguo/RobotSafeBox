@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/RobotSafeBox.iml" filepath="$PROJECT_DIR$/RobotSafeBox.iml" />
+      <module fileurl="file://$PROJECT_DIR$/robotsafebox.iml" filepath="$PROJECT_DIR$/robotsafebox.iml" />
     </modules>
   </component>
 </project>

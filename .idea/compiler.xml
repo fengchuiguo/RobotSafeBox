@@ -22,11 +22,11 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
-        <module name="RobotSafeBox" />
+        <module name="robotsafebox" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="RobotSafeBox" target="1.5" />
+    <bytecodeTargetLevel target="1.7">
+      <module name="robotsafebox" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>

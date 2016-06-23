@@ -1,0 +1,22 @@
+
+----------------------------------------------------------------------------------------
+
+一，(1)返回json数据格式说明：
+       state：状态（1：SUCCESS，0：ERROR，-1：UnLogin，-2：NoPermission）
+       data：数据
+       message：说明
+
+       例如：{"state":1,"message":"获取数据成功！","data":1466667342278}
+
+
+    (2)请求说明：所有的请求需要带上apicheck参数。（目前“8Hmj5FDP1X32v0GqsU_SR7c2”的MD5加密数值）
+
+       例如：http://localhost:8080/api/v1/demo?apicheck=94a625089169d175e852545808f9c2e9
+
+
+
+二，接口
+
+
+
+

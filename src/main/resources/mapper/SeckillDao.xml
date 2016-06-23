@@ -36,4 +36,14 @@
         ORDER BY create_time DESC
         limit #{offset},#{limit}
     </select>
+
+    <select id="queryAllByPager" resultType="Seckill">
+        SELECT
+        seckill_id,name,number,start_time,end_time,create_time
+        FROM
+        seckill
+        ORDER BY create_time DESC
+    </select>
+
+
 </mapper>

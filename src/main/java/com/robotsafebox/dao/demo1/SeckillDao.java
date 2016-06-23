@@ -1,6 +1,7 @@
 package com.robotsafebox.dao.demo1;
 
 import com.robotsafebox.entity.demo1.Seckill;
+import com.robotsafebox.framework.model.Pager;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.Date;
@@ -33,6 +34,9 @@ public interface SeckillDao {
      * @return
      */
     List<Seckill> queryAll(@Param("offset") int offset, @Param("limit") int limit);
+
+
+    List<Seckill> queryAllByPager(Pager pager);
 
 
 }

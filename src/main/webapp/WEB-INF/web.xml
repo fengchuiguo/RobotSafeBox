@@ -6,6 +6,34 @@
          metadata-complete="true">
     <!--修改Servlet版本为3.1-->
 
+
+    <!--增加编码过滤器（注意，需要设置forceEncoding参数值为true）-->
+    <!--最好把这段代码放在web.xml中开头的位置，因为拦截有顺序，如果放在后面的话容易拦截不到。-->
+    <filter>
+        <filter-name>springUtf8EncodingFilter</filter-name>
+        <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+        <init-param>
+            <param-name>forceEncoding</param-name>
+            <param-value>true</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>springUtf8EncodingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+
+
+    <listener>
+        <listener-class>com.robotsafebox.framework.listener.ApplicationContextListener</listener-class>
+    </listener>
+
+
+
     <!--配置SpringMVC中央控制器Servlet：DispatcherServlet -->
     <servlet>
         <servlet-name>robotsafebox-dispatcher</servlet-name>
@@ -26,4 +54,18 @@
         <!--默认匹配所有请求 -->
         <url-pattern>/</url-pattern>
     </servlet-mapping>
+
+
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+    <error-page>
+        <error-code>404</error-code>
+        <location>/404.jsp</location>
+    </error-page>
+    <error-page>
+        <error-code>500</error-code>
+        <location>/500.jsp</location>
+    </error-page>
+
 </web-app>

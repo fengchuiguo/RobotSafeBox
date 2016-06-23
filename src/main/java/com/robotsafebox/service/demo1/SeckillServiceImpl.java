@@ -11,6 +11,7 @@ import com.robotsafebox.enums.demo1.SeckillStateEnums;
 import com.robotsafebox.exception.demo1.RepeatKillException;
 import com.robotsafebox.exception.demo1.SeckillCloseException;
 import com.robotsafebox.exception.demo1.SeckillException;
+import com.robotsafebox.framework.model.Pager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,7 +42,11 @@ public class SeckillServiceImpl implements SeckillService {
     private final String slat = "asd$%^$156120#BbK0-%^%*&!&*fef~{}@##VJ*{))&@@@@#";
 
     public List<Seckill> getSeckillList() {
-        return seckillDao.queryAll(0, 4);
+        return seckillDao.queryAll(0, 10);
+    }
+
+    public List<Seckill> getSeckillListByPager(Pager pager) {
+        return seckillDao.queryAllByPager(pager);
     }
 
     public Seckill getById(int seckillId) {
@@ -71,7 +76,6 @@ public class SeckillServiceImpl implements SeckillService {
 //                redisDao.putSeckill(seckill);
 //            }
 //        }
-
 
 
         Date startTime = seckill.getStartTime();

@@ -1,5 +1,6 @@
 package com.robotsafebox.web.demo1;
 
+import com.robotsafebox.base.json.JsonResult;
 import com.robotsafebox.dto.demo1.Exposer;
 import com.robotsafebox.dto.demo1.SeckillExecution;
 import com.robotsafebox.dto.demo1.SeckillResult;
@@ -7,6 +8,7 @@ import com.robotsafebox.entity.demo1.Seckill;
 import com.robotsafebox.enums.demo1.SeckillStateEnums;
 import com.robotsafebox.exception.demo1.RepeatKillException;
 import com.robotsafebox.exception.demo1.SeckillCloseException;
+import com.robotsafebox.framework.model.Pager;
 import com.robotsafebox.service.demo1.SeckillService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,9 +31,20 @@ public class SeckillController {
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public String list(Model model) {
-        //获取列表页
-        List<Seckill> list = seckillService.getSeckillList();
+        //获取列表页 方法一
+//        List<Seckill> list = seckillService.getSeckillList();
+//        model.addAttribute("list", list);
+
+
+        //获取列表页 方法二，测试分页拦截器
+        Pager pager = new Pager();
+        System.out.println(pager.toString());
+        pager.setPageSize(5);
+        List<Seckill> list = seckillService.getSeckillListByPager(pager);
+        pager.setResults(list);
+        System.out.println(pager.toString());
         model.addAttribute("list", list);
+
 
         //list.jsp + model = ModelAndView
         return "demo1/list";  /*   /WEB-INF/jsp/"list".jsp  */
@@ -40,11 +53,11 @@ public class SeckillController {
     @RequestMapping(value = "/{seckillId}/detail", method = RequestMethod.GET)
     public String detail(@PathVariable("seckillId") int seckillId, Model model) {
         if (String.valueOf(seckillId) == null) {   // int --> String
-            return "redirect:/seckill/list";
+            return "redirect:/seckill/demo1/list";
         }
         Seckill seckill = seckillService.getById(seckillId);
         if (seckill == null) {
-            return "forward:/seckill/list";
+            return "forward:/seckill/demo1/list";
         }
         model.addAttribute("seckill", seckill);
         return "demo1/detail";
@@ -108,4 +121,30 @@ public class SeckillController {
         Date now = new Date();
         return new SeckillResult(true, now.getTime());
     }
+
+    @RequestMapping(value = "/jsontime/now", method = RequestMethod.GET)
+    @ResponseBody
+    public JsonResult jtime() {
+        Date now = new Date();
+        JsonResult jsonResult = new JsonResult();
+        jsonResult.setData(now);
+        jsonResult.setMessage("获取数据成功！");
+        jsonResult.setStateSuccess();
+        return jsonResult;
+    }
+
+    @RequestMapping(value = "/JsonResult", method = RequestMethod.GET)
+    @ResponseBody
+    public JsonResult JsonList(Model model) {
+        Pager pager = new Pager();
+        pager.setPageSize(5);
+        List<Seckill> list = seckillService.getSeckillListByPager(pager);
+        pager.setResults(list);
+        JsonResult jsonResult = new JsonResult();
+        jsonResult.setData(pager);
+        jsonResult.setMessage("获取数据成功！");
+        jsonResult.setStateSuccess();
+        return jsonResult;
+    }
+
 }
