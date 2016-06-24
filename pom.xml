@@ -194,7 +194,7 @@
     </dependencies>
 
     <build>
-        <finalName>robotsafebox</finalName>
+        <finalName>RobotSafeBox</finalName>
     </build>
 
 </project>
