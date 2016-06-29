@@ -10,6 +10,7 @@ import com.robotsafebox.exception.demo1.RepeatKillException;
 import com.robotsafebox.exception.demo1.SeckillCloseException;
 import com.robotsafebox.framework.model.Pager;
 import com.robotsafebox.framework.properties.Constant;
+import com.robotsafebox.framework.sms.ihuyi.SmsSendUtils;
 import com.robotsafebox.service.demo1.SeckillService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -42,6 +43,22 @@ public class UserController {
             pager.setResults(list);
             jsonResult.setData(pager);
             jsonResult.setMessage("获取数据成功！");
+            jsonResult.setStateSuccess();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            jsonResult.setMessage(Constant.EXCEPTION_MESSAGE);
+        }
+        return jsonResult;
+    }
+
+    @RequestMapping(value = "/demo/sendSms", method = RequestMethod.GET, produces = {Constant.CONTENT_TYPE_JSON})
+    @ResponseBody
+    public JsonResult sendSms() {
+        JsonResult jsonResult = new JsonResult();
+        try {
+            String s = SmsSendUtils.sendSms("phonexxx", "codexxx", "");
+            jsonResult.setData(s);
+            jsonResult.setMessage("发送短信成功！");
             jsonResult.setStateSuccess();
         } catch (Exception ex) {
             ex.printStackTrace();

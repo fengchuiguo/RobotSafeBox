@@ -9,6 +9,8 @@ public class PropertiesConfig {
 
     public static PropertiesConfiguration sysConfig;
 
+    private static PropertiesConfiguration smsConfigProperties;
+
     public static String getConfig(String key) {
         if (sysConfig == null) {
             try {
@@ -18,6 +20,17 @@ public class PropertiesConfig {
             }
         }
         return sysConfig.getString(key);
+    }
+
+    public static String getSmsConfigByKey(String key) {
+        if (smsConfigProperties == null) {
+            try {
+                smsConfigProperties = new PropertiesConfiguration("sms.properties");
+            } catch (ConfigurationException e) {
+                e.printStackTrace();
+            }
+        }
+        return smsConfigProperties.getString(key);
     }
 
     public static String getImagePath() {
