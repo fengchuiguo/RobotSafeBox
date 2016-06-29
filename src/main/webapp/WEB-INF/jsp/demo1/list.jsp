@@ -41,7 +41,8 @@
                             <fmt:formatDate value="${sk.createTime}" pattern="yyyy-MM-dd HH:mm:ss"></fmt:formatDate>
                         </td>
                         <td>
-                            <a class="btn btn-info" href="/seckill/${sk.seckillId}/detail" target="_blank">Link</a>
+                            <a class="btn btn-info" href="${path}/seckill/${sk.seckillId}/detail"
+                               target="_blank">Link</a>
                         </td>
                     </tr>
                 </c:forEach>

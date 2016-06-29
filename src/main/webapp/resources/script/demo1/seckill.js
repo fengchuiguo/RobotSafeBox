@@ -4,13 +4,16 @@ var seckill = {
     //封装秒杀相关的ajax的url
     URL: {
         now: function () {
-            return '../../seckill/time/now';
+            //return '../../seckill/time/now';
+            return path + '/seckill/time/now';
         },
         exposer: function (seckillId) {
-            return "../../seckill/" + seckillId + "/exposer";
+            //return "../../seckill/" + seckillId + "/exposer";
+            return path + "/seckill/" + seckillId + "/exposer";
         },
         execution: function (seckillId, md5) {
-            return "../../seckill/" + seckillId + "/" + md5 + "/execution";
+            //return "../../seckill/" + seckillId + "/" + md5 + "/execution";
+            return path + "/seckill/" + seckillId + "/" + md5 + "/execution";
             //  return "/"+md5+"/execution";
         }
 
@@ -116,7 +119,8 @@ var seckill = {
                     console.log("inputPhone=" + inputPhone);//TODO
                     if (seckill.validatePhone(inputPhone)) {
                         //电话写入cookie
-                        $.cookie('killPhone', inputPhone, {expires: 7, path: '/seckill'});
+                        //$.cookie('killPhone', inputPhone, {expires: 7, path: '/seckill'});
+                        $.cookie('killPhone', inputPhone, {expires: 7, path: path + '/seckill'});
                         //刷新页面
                         window.location.reload();
                     }

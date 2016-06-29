@@ -64,8 +64,11 @@
 <script src="http://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
 <script src="http://cdn.bootcss.com/jquery.countdown/2.1.0/jquery.countdown.min.js"></script>
 <!--编写交互逻辑 -->
-<script src="../../../resources/script/demo1/seckill.js" type="text/javascript" charset="GBK"></script>
+<script src="${path}/resources/script/demo1/seckill.js" type="text/javascript" charset="GBK"></script>
 <script type="text/javascript">
+
+    var path = "${path}";
+
     $(function () {
         //detail.jsp使用EL表达式向javascript传入参数
         seckill.detail.init({

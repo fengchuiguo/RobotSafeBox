@@ -35,6 +35,8 @@ VALUE ('100元秒杀哈哈哈',400,'2016-7-31 00:00:00','2016-7-31 00:00:00');
 INSERT INTO seckill (name,number,start_time,end_time)
 VALUE ('20元秒杀ing',600,'2016-6-1 00:00:00','2016-8-31 00:00:00');
 
+update seckill set create_time =sysdate();
+
 -- 秒杀成功明细表
 -- 用户登录认证相关信息(简化为手机号)
 CREATE TABLE `success_killed`(
